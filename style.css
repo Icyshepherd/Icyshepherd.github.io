@@ -13,13 +13,13 @@ body {
 
 h1{
   font-size: 50px;
-  padding-right: 2rem;
-  text-align: right;
+  padding-left: 2rem;
+  text-align: left;
 }
 h2{
-  font-size: 40px;
-  padding-right: 2rem;
-  text-align: right;
+  font-size: 30px;
+  padding-left: 2rem;
+  text-align: left;
 }
 h3,
 h4,
@@ -69,9 +69,9 @@ li a:hover:not(.active) {
 }
 
 .article-homepage {
-  text-align: right;
-  font-size: 20px;
-  padding-right: 1rem;
+  text-align: left;
+  font-size:1.2rem;
+  padding-left: 1rem;
 }
 .page-header nav {
   margin-left: auto;
@@ -93,25 +93,31 @@ li a:hover:not(.active) {
 }
 
 .img1 {
-  height: 300px;
+  max-height: 300px;
   margin: 5px;
   float: left;
   opacity: 0.8;
+  max-width: 100%;
 }
 .img1:hover{
   opacity: 1.0;
 }
 .img2{
-  height: 300px;
+  max-height: 300px;
   margin: 5px;
-  float: left;
+  max-width: 100%;
 }
 .div-article{
   display: block;
 }
 .article-contact {
-  font-size: 20px;
+  font-size:  1.5rem;;
   margin: 1rem;
+  font-weight: 400;
+}
+.article-con{
+  display: flex;
+  flex-direction: row;
 }
 @media (min-width: 600px) {
   .project-header {
