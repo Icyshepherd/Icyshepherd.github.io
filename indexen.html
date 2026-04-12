@@ -1,40 +1,418 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ChenyueLi's Homepage</title>
+    <title>Li Chenyue's Homepage</title>
     <link rel="stylesheet" href="style.css" />
+    <style>
+        .resume-home {
+            color: #262626;
+            background: #ffffff;
+        }
+
+        .resume-hero {
+            display: grid;
+            grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
+            min-height: calc(100vh - 122px);
+            background: linear-gradient(135deg, rgba(9, 10, 12, 0.98), rgba(24, 27, 31, 0.92));
+        }
+
+        .resume-hero-copy {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 4.2rem 4.5rem 4rem 3.5rem;
+            color: #ffffff;
+        }
+
+        .resume-kicker {
+            margin: 0 0 1rem;
+            color: #bbbbbb;
+            font-size: 0.82rem;
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+        }
+
+        .resume-hero h1 {
+            margin: 0;
+            padding: 0;
+            color: #ffffff;
+            font-size: clamp(3rem, 7vw, 5.8rem);
+            font-weight: 300;
+            line-height: 1.02;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .resume-hero p {
+            margin: 1rem 0 0;
+            max-width: 44rem;
+            color: #c6ccd4;
+            font-size: 1rem;
+            line-height: 1.3;
+        }
+
+        .resume-hero-quote {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.14);
+            color: #ffffff;
+            font-size: 1.18rem;
+            line-height: 1.28;
+        }
+
+        .resume-hero-media {
+            position: relative;
+            overflow: hidden;
+            min-height: 460px;
+        }
+
+        .resume-hero-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: right center;
+            filter: contrast(1.02) saturate(0.92);
+        }
+
+        .resume-hero-media::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, rgba(9, 10, 12, 0.12), rgba(9, 10, 12, 0.46));
+        }
+
+        .resume-section {
+            padding: 3.2rem 3.5rem;
+            border-top: 1px solid rgba(38, 38, 38, 0.12);
+            background: #ffffff;
+        }
+
+        .resume-section-head {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            text-align: left;
+        }
+
+        .resume-section-head span {
+            color: #bbbbbb;
+            padding-left: 1.2rem;
+            font-size: 0.84rem;
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        .resume-section-head h2 {
+            margin: 0;
+            padding-left: 1.2rem;
+            color: #262626;
+            font-size: clamp(2.65rem, 4.8vw, 4rem);
+            font-weight: 350;
+            line-height: 1.02;
+            letter-spacing: 0.01em;
+            text-align: left;
+            text-transform: none;
+        }
+
+        .resume-grid {
+            display: grid;
+            gap: 1px;
+            background: rgba(38, 38, 38, 0.08);
+        }
+
+        .resume-grid-3 {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .resume-grid-2 {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .resume-card,
+        .resume-block {
+            background: #ffffff;
+            padding: 1.2rem;
+        }
+
+        .resume-card h3,
+        .resume-block h3 {
+            margin: 0;
+            color: #262626;
+            font-size: 1.08rem;
+            font-weight: 700;
+            line-height: 1.15;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        .resume-card h3 a,
+        .resume-block h3 a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .resume-card h3 a:hover,
+        .resume-block h3 a:hover {
+            text-decoration: underline;
+            text-underline-offset: 0.14em;
+        }
+
+        .resume-meta {
+            margin-top: 0.55rem;
+            color: #1c69d4;
+            font-size: 0.82rem;
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .resume-text {
+            margin-top: 0.9rem;
+            color: #262626;
+            font-size: 0.96rem;
+            line-height: 1.3;
+            white-space: pre-line;
+        }
+
+        .resume-list {
+            margin-top: 0.9rem;
+            padding: 0;
+            list-style: none;
+            background: transparent;
+            border: 0;
+            width: auto;
+            display: block;
+        }
+
+        .resume-list li {
+            margin: 0;
+            padding: 1rem 0;
+            border-top: 1px solid rgba(38, 38, 38, 0.1);
+            color: #5b5b5b;
+            font-size: 0.96rem;
+            line-height: 1.3;
+        }
+
+        .resume-list li:first-child {
+            padding-top: 0;
+            border-top: 0;
+        }
+
+        .resume-footer {
+            padding: 2.5rem 3.5rem 3.2rem;
+            background: #0b0c0e;
+            border-top: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .resume-footer p {
+            margin: 0;
+            color: #c6ccd4;
+            font-size: 0.96rem;
+            line-height: 1.3;
+        }
+
+        @media (max-width: 980px) {
+            .resume-hero {
+                grid-template-columns: 1fr;
+            }
+
+            .resume-hero-copy,
+            .resume-section,
+            .resume-footer {
+                padding-left: 1.2rem;
+                padding-right: 1.2rem;
+            }
+
+            .resume-section-head {
+                gap: 0.75rem;
+                margin-bottom: 2.2rem;
+            }
+
+            .resume-grid-3,
+            .resume-grid-2 {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
     <header class=page-header>
         <div>
             <a href="index.html">中文</a>
         </div>
-
     </header>
     <ul class=ul>
-        <li><a href="indexen.html">About</a></li>
-        <li><a href="projectsen.html">Projects</a></li>
-        <li><a href="hobbiesen.html">Hobbies</a></li>
+        <li><a href="indexen.html">Home</a></li>
+        <li><a href="projectsen.html">Design Projects</a></li>
+        <li><a href="hobbiesen.html">Drawing & Photography</a></li>
         <li><a href="contacten.html">Contact</a></li>
-      </ul>
-    <article>
-        <div class="project-image-homepage">
-            <img src="图片/homepage.png" alt="">
-        </div>
-        <h1>
-            Chenyue Li
-        </h1>
-        <p class="article-homepage">
-            I am stduying transportation design in Tongji University now.
-        </p>
-        <p class="article-homepage">
-            I was born in Shanghai, graduated from Shanghai Experimental School.
-        </p>
-        <p class="article-homepage">
-            I love F1, detective novels, Japanese animations and photography. And I am a little introverted.
-        </p>
-        <p class="article-homepage">
-            The function and logic of products is what I put more emphasis on. Products need to be reasonable.
-        </p>
-    </article>
+    </ul>
+
+    <main class="resume-home">
+        <section class="resume-hero">
+            <div class="resume-hero-copy">
+                <p class="resume-kicker">李辰悦</p>
+                <h1>LI, CHENYUE</h1>
+                <p>My travels have taken me to 15 countries. I love capturing memorable moments on the road with a camera, and I also enjoy expressing my feelings and reflections through drawing.</p>
+                <p class="resume-hero-quote">Having loved motorsport since childhood, I gained extensive hands-on experience through deep involvement in a student racing team. I systematically solved a range of complex problems, built practical experience from concept design to product realization, and successfully turned design ideas into tangible outcomes.</p>
+                <p>During my undergraduate studies, I led multiple product design course projects and developed strong creativity and a strong sense of responsibility. With an interdisciplinary background and fast learning ability, I am able to communicate and collaborate efficiently with people from different professional fields.</p>
+                <p>I am proficient in using AI tools for literature research and synthesis, English polishing, engineering calculation, programming assistance, image generation for illustration references, design inspiration exploration, rendering generation and concept expansion, design evaluation, and product demo production through vibe coding.</p>
+            </div>
+            <div class="resume-hero-media">
+                <img src="图片/homepage.png" alt="Homepage key visual of Li Chenyue">
+            </div>
+        </section>
+
+        <section class="resume-section">
+            <div class="resume-section-head">
+                <span>教育经历</span>
+                <h2>Education</h2>
+            </div>
+            <div class="resume-grid resume-grid-3">
+                <article class="resume-card">
+                    <h3>Nanyang Technological University</h3>
+                    <div class="resume-meta">Aug 2025 - Dec 2026</div>
+                    <div class="resume-text">Master's degree, Mechanical Engineering (MSc in Mechanical Engineering)</div>
+                    <div class="resume-text">School of Mechanical and Aerospace Engineering (NTU-MAE)</div>
+                </article>
+                <article class="resume-card">
+                    <h3>Tongji University</h3>
+                    <div class="resume-meta">Sep 2019 - Jul 2025</div>
+                    <div class="resume-text">Bachelor's degree, Vehicle Engineering (Innovation Pilot Program)</div>
+                    <div class="resume-text">College of Automotive Studies &amp; College of Design and Innovation</div>
+                    <ul class="resume-list">
+                        <li>Five-year interdisciplinary innovation program jointly training automotive styling talent through Vehicle Engineering and Industrial Design.</li>
+                        <li>German intensive program, College of Foreign Languages, one-year track.</li>
+                        <li>Tongji University Florence Overseas Campus, 2023 summer school, exchange program at the cultural and arts education practice base of the Florence overseas campus.</li>
+                    </ul>
+                </article>
+                <article class="resume-card">
+                    <h3>Technical University of Munich</h3>
+                    <div class="resume-meta">Apr 2024 - Aug 2024</div>
+                    <div class="resume-text">Exchange Program of Mechanical Engineering</div>
+                    <div class="resume-text">School of Engineering and Design (TUM-ED)</div>
+                </article>
+            </div>
+        </section>
+
+        <section class="resume-section">
+            <div class="resume-section-head">
+                <span>实习经历</span>
+                <h2>Internship</h2>
+            </div>
+            <div class="resume-grid resume-grid-2">
+                <article class="resume-card">
+                    <h3>Beijing CAS Software Center Co., Ltd.</h3>
+                    <div class="resume-meta">Jan 2026 - Feb 2026</div>
+                    <div class="resume-text">Product Manager Assistant, Digital Science and Education Business Department</div>
+                    <ul class="resume-list">
+                        <li>Conducted an in-depth analysis of the business assessment system. By studying the user manual and carrying out hands-on testing, I fully understood the core functions and workflows, focused on the personnel management module, and identified and evaluated 17 potential optimization opportunities.</li>
+                        <li>Prepared PRD documentation by structuring business processes, systematically analyzing and prioritizing all optimization opportunities, and proposing concrete recommendations. Used Figma for prototype design to present optimization concepts clearly and support system iteration decisions.</li>
+                    </ul>
+                </article>
+                <article class="resume-card">
+                    <h3>SAIC Maxus Automotive Co., Ltd.</h3>
+                    <div class="resume-meta">Aug 2023 - Sep 2023</div>
+                    <div class="resume-text">Calibration Engineer, Calibration Engineering Department, Commercial Vehicle Technical Center, SAIC Motor Corporation Limited</div>
+                    <ul class="resume-list">
+                        <li>Collected data streams through the OBD interface using DiagRA D, flashed the ECM with Inca, simulated faults using a breakout box, and assisted my mentor in completing fault code validation.</li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
+        <section class="resume-section">
+            <div class="resume-section-head">
+                <span>社团经历</span>
+                <h2>Extracurricular Activities - TJU Lotus Racing Team</h2>
+            </div>
+            <div class="resume-grid resume-grid-2">
+                <article class="resume-block">
+                    <h3><a href="TJUracingen.html">Business Management Department, Publicity Group Manager</a></h3>
+                    <div class="resume-meta">Oct 2022 - Sep 2024</div>
+                    <div class="resume-text">Mainly responsible for poster illustration, daily photography, livery design, team apparel design, merchandise design, and video production. Specific projects included:</div>
+                    <ul class="resume-list">
+                        <li>Led the design of the 2023 TJU Lotus Racing Team winter hoodie. Product needs were defined through questionnaires and interviews with team members, and feedback from core members was continuously collected during development to further optimize both the design and pricing strategy.</li>
+                        <li>Led the end-to-end planning, design, production, and sales of a New Year merchandise series featuring 4 products: a desk calendar, teddy bear, red envelopes, and a tote bag.</li>
+                        <li>At the 2024 Formula SAE Japan, I was responsible for the design of the static event presentation slides and display boards. The team won second place in the Design Event and second place in the Presentation Event.</li>
+                    </ul>
+                </article>
+                <article class="resume-block">
+                    <h3><a href="http://www.tjuracing.com/" target="_blank" rel="noopener noreferrer">Scrum Master, Body and Aerodynamics Department</a></h3>
+                    <div class="resume-meta">Jan 2023 - Jun 2023</div>
+                    <div class="resume-text">Responsible for guiding a 13-member team in the design and production of the 2023 season body and aerodynamics package.</div>
+                    <ul class="resume-list">
+                        <li>Responsibilities included organizing meetings, helping technical members formulate work plans, regularly reviewing design progress, assisting communication with suppliers, ensuring stable project advancement, and participating in carbon fiber monocoque processing tasks.</li>
+                        <li>Third Prize in the Design Report category at the 2023 Formula Student China (FSC).</li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
+        <section class="resume-section">
+            <div class="resume-section-head">
+                <span>项目经历</span>
+                <h2>Projects</h2>
+            </div>
+            <div class="resume-grid resume-grid-2">
+                <article class="resume-card">
+                    <h3><a href="Mileworld1en.html">Mileworld Transportation Design</a></h3>
+                    <div class="resume-meta">Sep 2024 - Jan 2025</div>
+                    <div class="resume-text">Automotive design course project</div>
+                    <ul class="resume-list">
+                        <li>Mileworld builds a transportation service system composed of vehicles, stations, and an app to provide tourists in Erdaobaihe Town with a travel mode that balances ride comfort and travel information services. Through the app, users can enter their travel plans and mobility needs, choose suitable vehicle types and recommended routes, then board dedicated low-speed enclosed autonomous vehicles at stations set up near key transport hubs and attractions. The vehicles use a modular combination system to allocate capacity precisely, reduce waste of space and energy, and provide private customized service. The app integrates tourism information and official news from multiple platforms, combines them with real-time traffic conditions, and offers the best travel plan suggestions for the moment.</li>
+                    </ul>
+                </article>
+                <article class="resume-card">
+                    <h3><a href="https://icyshepherd.github.io/club-recruitment/welcome.html" target="_blank" rel="noopener noreferrer">Intelligent Club Recruitment Matching Platform</a></h3>
+                    <div class="resume-meta">Mar 2026</div>
+                    <div class="resume-text">Personal vibe coding project, internet product demo</div>
+                    <ul class="resume-list">
+                        <li>This product addresses common problems in university club recruitment such as information asymmetry, cumbersome sign-up procedures, and difficulty in matching interests. It is designed as a student-centered intelligent club recruitment matching platform. The platform combines interest tag selection with an intelligent chatbot Q&amp;A flow, guiding freshmen to express their needs regarding club types, activity content, and preferred modes of participation, so they can receive recommendations that better match their interests and development goals. Clubs can present activity highlights, organizational features, and trial-event information on dedicated pages, helping freshmen understand the atmosphere and actual content more intuitively. After browsing the recommendation results, freshmen can further register for trial activities and lower the barrier to decision-making. Once they have gained a full understanding of a club, users can also sign up directly through the club page, creating a one-stop recruitment experience from interest discovery and intelligent recommendation to deeper understanding and convenient joining.</li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
+        <section class="resume-section">
+            <div class="resume-section-head">
+                <span>技能与特长</span>
+                <h2>Skills &amp; Strengths</h2>
+            </div>
+            <div class="resume-grid resume-grid-3">
+                <article class="resume-card">
+                    <h3>Software Skills</h3>
+                    <ul class="resume-list">
+                        <li>Graphic design: Adobe PS/AI/AE/PR/LR/ID, Procreate, Figma</li>
+                        <li>3D modeling: Blender, Alias, SolidWorks, KeyShot</li>
+                        <li>AI applications: Midjourney, Stable Diffusion, ChatGPT, Gemini, Codex, Python</li>
+                        <li>Others: Autodesk CAD, Microsoft Office, DaVinci Resolve</li>
+                    </ul>
+                </article>
+                <article class="resume-card">
+                    <h3>Language Certificates</h3>
+                    <ul class="resume-list">
+                        <li>English: IELTS 7.5</li>
+                        <li>German: PHS6</li>
+                    </ul>
+                </article>
+                <article class="resume-card">
+                    <h3>Other Awards</h3>
+                    <ul class="resume-list">
+                        <li>Sudoku: Outstanding Participant Award, Preliminary Round, 2019 National College Students Sudoku Challenge</li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="nav.js"></script>
 </body>

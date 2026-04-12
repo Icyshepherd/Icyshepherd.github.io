@@ -1,7 +1,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ChenyueLi's Homepage</title>
+    <title>Li Chenyue's Homepage</title>
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -12,19 +12,73 @@
 
     </header>
     <ul class=ul>
-        <li><a href="indexen.html">About</a></li>
-        <li><a href="projectsen.html">Projects</a></li>
-        <li><a href="hobbiesen.html">Hobbies</a></li>
+        <li><a href="indexen.html">Home</a></li>
+        <li><a href="projectsen.html">Design Projects</a></li>
+        <li><a href="hobbiesen.html">Drawing & Photography</a></li>
         <li><a href="contacten.html">Contact</a></li>
       </ul>
     <article>
         <div>
+            <img src="图片/20251005-DSC03128.jpg" alt="" class="img1">
+            <img src="图片/20260306-_DSC0127.jpg" alt="" class="img1">
+            <img src="图片/20260303-_DSC6878.jpg" alt="" class="img1">            
+            <img src="图片/20250118-DSC09005-2.jpg" alt="" class="img1">            
+            <img src="图片/20240408-3G4A1681.jpg" alt="" class="img1">
+            <img src="图片/20240413-3G4A1893.jpg" alt="" class="img1">
+            <img src="图片/20260305-_DSC8325.jpg" alt="" class="img1">
+            <img src="图片/20240823-3G4A7527.jpg" alt="" class="img1">
+            <img src="图片/20240801-3G4A7159.jpg" alt="" class="img1">
+            <img src="图片/20240823-3G4A7365-2.jpg" alt="" class="img1">
+            <img src="图片/20240701-3G4A6143.jpg" alt="" class="img1">            
+            <img src="图片/20260304-_DSC7453.jpg" alt="" class="img1">
             <img src="图片/sakura.jpg" alt="" class="img1">
             <img src="图片/blackhole.jpg" alt="" class="img1">
             <img src="图片/fuji.jpg" alt="" class="img1">
             <img src="图片/dawn.jpg" alt="" class="img1">
             <img src="图片/green.jpg" alt="" class="img1">
+            <img src="图片/2025-08-17 001406.jpg" alt="" class="img1">
+            <img src="图片/2025-09-07 025156.jpg" alt="" class="img1">
+            <img src="图片/Landoscar扑克.png" alt="" class="img1">
         </div>
         
     </article>
+    <div class="image-lightbox" id="imageLightbox" aria-hidden="true">
+        <button class="image-lightbox-close" id="imageLightboxClose" aria-label="Close">x</button>
+        <img src="" alt="" id="imageLightboxImg">
+    </div>
+    <script>
+        const lightbox = document.getElementById("imageLightbox");
+        const lightboxImg = document.getElementById("imageLightboxImg");
+        const lightboxClose = document.getElementById("imageLightboxClose");
+        const images = document.querySelectorAll(".img1");
+
+        function closeLightbox() {
+            lightbox.classList.remove("is-open");
+            lightbox.setAttribute("aria-hidden", "true");
+            lightboxImg.src = "";
+            lightboxImg.alt = "";
+        }
+
+        images.forEach((image) => {
+            image.addEventListener("click", () => {
+                lightboxImg.src = image.src;
+                lightboxImg.alt = image.alt;
+                lightbox.classList.add("is-open");
+                lightbox.setAttribute("aria-hidden", "false");
+            });
+        });
+
+        lightboxClose.addEventListener("click", closeLightbox);
+        lightbox.addEventListener("click", (event) => {
+            if (event.target === lightbox) {
+                closeLightbox();
+            }
+        });
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape") {
+                closeLightbox();
+            }
+        });
+    </script>
+    <script src="nav.js"></script>
 </body>

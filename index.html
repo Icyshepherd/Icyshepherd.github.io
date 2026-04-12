@@ -3,38 +3,416 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>李辰悦的主页</title>
     <link rel="stylesheet" href="style.css" />
+    <style>
+        .resume-home {
+            color: #262626;
+            background: #ffffff;
+        }
+
+        .resume-hero {
+            display: grid;
+            grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
+            min-height: calc(100vh - 122px);
+            background: linear-gradient(135deg, rgba(9, 10, 12, 0.98), rgba(24, 27, 31, 0.92));
+        }
+
+        .resume-hero-copy {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 4.2rem 4.5rem 4rem 3.5rem;
+            color: #ffffff;
+        }
+
+        .resume-kicker {
+            margin: 0 0 1rem;
+            color: #bbbbbb;
+            font-size: 0.82rem;
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+        }
+
+        .resume-hero h1 {
+            margin: 0;
+            padding: 0;
+            color: #ffffff;
+            font-size: clamp(3rem, 7vw, 5.8rem);
+            font-weight: 300;
+            line-height: 1.02;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .resume-hero p {
+            margin: 1rem 0 0;
+            max-width: 44rem;
+            color: #c6ccd4;
+            font-size: 1rem;
+            line-height: 1.3;
+        }
+
+        .resume-hero-quote {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.14);
+            color: #ffffff;
+            font-size: 1.18rem;
+            line-height: 1.28;
+        }
+
+        .resume-hero-media {
+            position: relative;
+            overflow: hidden;
+            min-height: 460px;
+        }
+
+        .resume-hero-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: right center;
+            filter: contrast(1.02) saturate(0.92);
+        }
+
+        .resume-hero-media::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, rgba(9, 10, 12, 0.12), rgba(9, 10, 12, 0.46));
+        }
+
+        .resume-section {
+            padding: 3.2rem 3.5rem;
+            border-top: 1px solid rgba(38, 38, 38, 0.12);
+            background: #ffffff;
+        }
+
+        .resume-section-head {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            text-align: left;
+        }
+
+        .resume-section-head span {
+            color: #bbbbbb;
+            padding-left: 1.2rem;
+            font-size: 0.84rem;
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        .resume-section-head h2 {
+            margin: 0;
+            padding-left: 1.2rem;
+            color: #262626;
+            font-size: clamp(2.65rem, 4.8vw, 4rem);
+            font-weight: 350;
+            line-height: 1.02;
+            letter-spacing: 0.01em;
+            text-align: left;
+            text-transform: none;
+        }
+
+        .resume-grid {
+            display: grid;
+            gap: 1px;
+            background: rgba(38, 38, 38, 0.08);
+        }
+
+        .resume-grid-3 {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .resume-grid-2 {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .resume-card,
+        .resume-block {
+            background: #ffffff;
+            padding: 1.2rem;
+        }
+
+        .resume-card h3,
+        .resume-block h3 {
+            margin: 0;
+            color: #262626;
+            font-size: 1.08rem;
+            font-weight: 700;
+            line-height: 1.15;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        .resume-card h3 a,
+        .resume-block h3 a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .resume-card h3 a:hover,
+        .resume-block h3 a:hover {
+            text-decoration: underline;
+            text-underline-offset: 0.14em;
+        }
+
+        .resume-meta {
+            margin-top: 0.55rem;
+            color: #1c69d4;
+            font-size: 0.82rem;
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .resume-text {
+            margin-top: 0.9rem;
+            color: #262626;
+            font-size: 0.96rem;
+            line-height: 1.3;
+            white-space: pre-line;
+        }
+
+        .resume-list {
+            margin-top: 0.9rem;
+            padding: 0;
+            list-style: none;
+            background: transparent;
+            border: 0;
+            width: auto;
+            display: block;
+        }
+
+        .resume-list li {
+            margin: 0;
+            padding: 1rem 0;
+            border-top: 1px solid rgba(38, 38, 38, 0.1);
+            color: #5b5b5b;
+            font-size: 0.96rem;
+            line-height: 1.3;
+        }
+
+        .resume-list li:first-child {
+            padding-top: 0;
+            border-top: 0;
+        }
+
+        .resume-footer {
+            padding: 2.5rem 3.5rem 3.2rem;
+            background: #0b0c0e;
+            border-top: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .resume-footer p {
+            margin: 0;
+            color: #c6ccd4;
+            font-size: 0.96rem;
+            line-height: 1.3;
+        }
+
+        @media (max-width: 980px) {
+            .resume-hero {
+                grid-template-columns: 1fr;
+            }
+
+            .resume-hero-copy,
+            .resume-section,
+            .resume-footer {
+                padding-left: 1.2rem;
+                padding-right: 1.2rem;
+            }
+
+            .resume-section-head {
+                gap: 0.75rem;
+                margin-bottom: 2.2rem;
+            }
+
+            .resume-grid-3,
+            .resume-grid-2 {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
     <header class=page-header>
         <div>
             <a href="indexen.html">ENGLISH</a>
         </div>
-
     </header>
     <ul class=ul>
-        <li><a href="index.html">主页</a></li>
-        <li><a href="projects.html">作品</a></li>
-        <li><a href="hobbies.html">兴趣爱好</a></li>
+        <li><a href="index.html">首页</a></li>
+        <li><a href="projects.html">设计作品</a></li>
+        <li><a href="hobbies.html">绘画摄影</a></li>
         <li><a href="contact.html">联系方式</a></li>
-      </ul>
-    <article>
-        <div class="project-image-homepage">
-            <img src="图片/homepage.png" alt="">
-        </div>
-        <h1>
-            李辰悦
-        </h1>
-        <p class="article-homepage">
-            目前就读于同济大学汽车造型创新实验区，
-        </p>
-        <p class="article-homepage">
-            出生并成长于上海，毕业于上海市实验学校，
-        </p>
-        <p class="article-homepage">
-            喜欢F1、侦探小说、日漫及摄影，性格偏内向，
-        </p>
-        <p class="article-homepage">
-            注重产品的功能与逻辑，存在需合理。
-        </p>
-    </article>
+    </ul>
+
+    <main class="resume-home">
+        <section class="resume-hero">
+            <div class="resume-hero-copy">
+                <p class="resume-kicker">LI, Chenyue</p>
+                <h1>李辰悦</h1>
+                <p>旅行足迹遍布15个国家，喜欢用相机记录旅途中精彩的瞬间，也爱用画笔表达自己的心情与感受。</p>
+                <p class="resume-hero-quote">自幼热爱赛车运动，在学生车队深度实践中，系统性地解决了多项难题，积累了从概念设计到产品落地的宝贵实战经验，成功将设计转化为实际成果。</p>
+                <p>本科阶段主导了多个产品设课程项目，具备较强的创新能力与责任心；凭借跨学科背景与快速学习能力，具备与不同专业人才高效沟通与协作的能力。</p>
+                <p>熟练使用AI工具进行文献检索与总结、英文润色、工程计算、编程辅助、图像生成（用于插图绘画参考、设计灵感探索、效果图生成与方案发散）、设计方案评估，以及产品Demo制作（Vibe Coding）。</p>
+            </div>
+            <div class="resume-hero-media">
+                <img src="图片/homepage.png" alt="李辰悦主页主视觉">
+            </div>
+        </section>
+
+        <section class="resume-section">
+            <div class="resume-section-head">
+                <span>Education</span>
+                <h2>教育经历</h2>
+            </div>
+            <div class="resume-grid resume-grid-3">
+                <article class="resume-card">
+                    <h3>南洋理工大学</h3>
+                    <div class="resume-meta">2025年08月 - 2026年12月</div>
+                    <div class="resume-text">硕士，机械工程（MSc in Mechanical Engineering）</div>
+                    <div class="resume-text">机械与航空航天工程学院 (NTU-MAE)</div>
+                </article>
+                <article class="resume-card">
+                    <h3>同济大学</h3>
+                    <div class="resume-meta">2019年09月 - 2025年07月</div>
+                    <div class="resume-text">本科，车辆工程（创新实验区）</div>
+                    <div class="resume-text">汽车学院 &amp; 设计创意学院</div>
+                    <ul class="resume-list">
+                        <li>车辆工程与工业设计跨学科联合培养汽车造型专业人才模式创新实验区（五年制）</li>
+                        <li>外国语学院，德语强化班（一年制）</li>
+                        <li>同济大学佛罗伦萨海外校区，佛罗伦萨海外校区文化艺术教育实践基地交流项目（2023暑期夏校）</li>
+                    </ul>
+                </article>
+                <article class="resume-card">
+                    <h3>慕尼黑工业大学</h3>
+                    <div class="resume-meta">2024年04月 - 2024年08月</div>
+                    <div class="resume-text">机械工程专业交换项目（Exchange Program of Mechanical Engineering）</div>
+                    <div class="resume-text">工程与设计学院（TUM-ED）</div>
+                </article>
+            </div>
+        </section>
+
+        <section class="resume-section">
+            <div class="resume-section-head">
+                <span>Internship</span>
+                <h2>实习经历</h2>
+            </div>
+            <div class="resume-grid resume-grid-2">
+                <article class="resume-card">
+                    <h3>北京中科院软件中心有限公司</h3>
+                    <div class="resume-meta">2026年01月 - 2026年02月</div>
+                    <div class="resume-text">产品经理助理，数字科教业务部</div>
+                    <ul class="resume-list">
+                        <li>深度解析业务考核系统，通过研读用户手册与实操测试，全面掌握核心功能与业务流程，聚焦人员管理模块，识别并评估17项潜在优化机会。</li>
+                        <li>PRD文档谱写：结构化梳理业务流程，对全部优化机会进行系统性分析及优先级排序，提出具体优化建议。运用Figma进行原型设计，直观呈现优化方案，为系统迭代提供决策支持。</li>
+                    </ul>
+                </article>
+                <article class="resume-card">
+                    <h3>上汽大通汽车有限公司</h3>
+                    <div class="resume-meta">2023年08月 - 2023年09月</div>
+                    <div class="resume-text">标定工程师，上海汽车集团股份有限公司商用车技术中心</div>
+                    <ul class="resume-list">
+                        <li>从OBD接口，利用软件DiagRA D进行数据流抓取，利用Inca对ECM进行刷写。使用跳线盒进行故障模拟，协助带教完成故障码验证工作。</li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
+        <section class="resume-section">
+            <div class="resume-section-head">
+                <span>Community</span>
+                <h2>社团经历——同济路特斯翼驰车队</h2>
+            </div>
+            <div class="resume-grid resume-grid-2">
+                <article class="resume-block">
+                    <h3><a href="TJUracing.html">商业管理部，宣传组经理</a></h3>
+                    <div class="resume-meta">2022年10月 - 2024年09月</div>
+                    <div class="resume-text">主要负责海报绘制、日常摄影、涂装设计、队服设计、周边设计及视频制作等。具体项目包括：</div>
+                    <ul class="resume-list">
+                        <li>负责“2023翼驰车队冬季卫衣”设计，通过对队员发放问卷与访谈确定产品需求，开发过程中持续收集核心队员反馈，以更好地优化设计与定价策略。</li>
+                        <li>作为项目负责人，主导“2024翼驰车队新年周边系列”的设计、生产与销售，包含台历、小熊、红包、帆布袋共4款产品。系列产品在一个月内完成200套的赠送与销售，次年实现红包与小熊的二次再版，有效提升车队品牌形象。</li>
+                        <li>2024日本大学生方程式大赛 (2024 Formula SAE Japan) 中，负责静态赛演讲PPT与展板的设计制作，车队荣获设计报告 (Design Event)第二名、商业报告(Presentation Event)第二名</li>
+                    </ul>
+                </article>
+                <article class="resume-block">
+                    <h3><a href="http://www.tjuracing.com/" target="_blank" rel="noopener noreferrer">敏捷大师（Scrum Master），车身与空气动力学部</a></h3>
+                    <div class="resume-meta">2023年01月 - 2023年06月</div>
+                    <div class="resume-text">负责引导13人团队进行2023赛季车身与空气动力学套件的设计与生产。工作内容包括：</div>
+                    <ul class="resume-list">
+                        <li>会议组织，协助技术队员制定工作计划，定期核对设计进度，协助队员与供应商的沟通，确保项目稳定推进，参与碳纤维单体壳加工任务。</li>
+                        <li>2023中国大学生方程式汽车大赛（FSC）设计报告，第三名</li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
+        <section class="resume-section">
+            <div class="resume-section-head">
+                <span>Projects</span>
+                <h2>项目经历</h2>
+            </div>
+            <div class="resume-grid resume-grid-2">
+                <article class="resume-card">
+                    <h3><a href="Mileworld1.html">Mileworld交通工具设计</a></h3>
+                    <div class="resume-meta">2024年9月-2025年1月</div>
+                    <div class="resume-text">学校汽车设计课程项目</div>
+                    <ul class="resume-list">
+                        <li>Mileworld通过建立一个由小车、车站与APP组成的交通服务系统，为二道白河镇游客提供一个兼顾旅途舒适性与旅行信息服务的出行方式。游客可通过App，输入自己的旅游计划出行需求，选择合适的车型与推荐的旅行线路，到关键交通枢纽与景点设立的站点，乘坐专属的低速封闭无人驾驶小车出行。小车通过模块化组合，实现精确调配运能，减少空间与能源的浪费，为游客提供私密的定制化服务。APP整合各个平台及官方的旅游资讯新闻，结合实时路况，提供当下最佳的旅行计划建议。</li>
+                    </ul>
+                </article>
+                <article class="resume-card">
+                    <h3><a href="https://icyshepherd.github.io/club-recruitment/welcome.html" target="_blank" rel="noopener noreferrer">社团招新智能匹配平台</a></h3>
+                    <div class="resume-meta">2026年3月</div>
+                    <div class="resume-text">个人Vibe Coding作品，互联网产品demo</div>
+                    <ul class="resume-list">
+                        <li>产品面向高校社团招新中普遍存在的信息不对称、报名流程繁琐和兴趣匹配困难等问题，设计了一款以学生为核心的社团招新智能匹配平台。平台结合兴趣标签选择与智能 chatbot 问答，引导新生表达自己对社团类型、活动内容和参与方式的具体需求，从而获得更符合个人兴趣与发展方向的社团推荐。各社团可通过主页集中展示活动图文、组织特色和体验活动信息，帮助新生更直观地了解社团氛围与实际内容；新生也可在浏览推荐结果后，进一步报名参加体验活动，降低决策门槛。在充分了解社团情况后，用户还可直接通过社团主页快速完成报名，实现从兴趣发现、智能推荐到深入了解和便捷加入的一站式招新体验。该产品demo使用Figma和Codex完成开发。</li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
+        <section class="resume-section">
+            <div class="resume-section-head">
+                <span>Skills</span>
+                <h2>技能及特长</h2>
+            </div>
+            <div class="resume-grid resume-grid-3">
+                <article class="resume-card">
+                    <h3>软件技能</h3>
+                    <ul class="resume-list">
+                        <li>平面设计：Adobe PS/AI/AE/PR/LR/ID, Procreate, Figma</li>
+                        <li>3D建模 ：Blender, Alias, Solidworks, Keyshot</li>
+                        <li>AI应用 ：Midjourney, Stable Diffusion, ChatGPT, Gemini, Codex, Python</li>
+                        <li>其他 ：Autodesk CAD, Microsoft office, DaVinci Resolve</li>
+                    </ul>
+                </article>
+                <article class="resume-card">
+                    <h3>语言证书</h3>
+                    <ul class="resume-list">
+                        <li>英语：IELTS 7.5</li>
+                        <li>德语：PHS6</li>
+                    </ul>
+                </article>
+                <article class="resume-card">
+                    <h3>其他奖项</h3>
+                    <ul class="resume-list">
+                        <li>数独：2019全国大学生数独挑战赛初赛优秀选手奖</li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="nav.js"></script>
 </body>
